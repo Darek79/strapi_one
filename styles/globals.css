@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply overflow-y-auto;
+  }
+}
+
 @layer components {
   .hoverno {
     @apply hover:cursor-default;
+  }
+  .sectionMaxWidth {
+    @apply w-[100%] max-w-screen-2xl col-start-2 col-end-3;
   }
 }

@@ -7,7 +7,7 @@ import {
   WheelEvent
 } from 'react';
 import { PageDefaultContext } from 'context/pageDefaults';
-import { Aside } from 'components';
+import { Aside, SectionWrapper } from 'components';
 import { debounce } from 'utils';
 import Image from 'next/image';
 import logoSvg from 'public/logo.svg';
@@ -36,17 +36,20 @@ export default function Navigation({
   const [sidebar, setSidebar] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!sidebar) {
-      window.onwheel = debounce((e: WheelEvent) => {
-        console.log(window.scrollY);
+    window.onwheel = debounce((e: WheelEvent) => {
+      if (!sidebar) {
         e.deltaY < 0 ? setOpen(true) : setOpen(false);
-      }, 300);
-    }
+      }
+    }, 300);
   }, [sidebar]);
 
   function sidebarOpener() {
     setSidebar(p => !p);
   }
+
+  const sectionWrapper = classnames({
+    'sticky top-0 row-start-1 h-[50px] overflow-hidden sectionMaxWidth': true
+  });
 
   const sectionClasses = classnames({
     [`${sectionStyles}`]: open,
@@ -75,23 +78,27 @@ export default function Navigation({
   });
 
   return (
-    <section className={sectionClasses}>
-      <Aside isOpen={sidebar} />
-      <ul className={listClasses}>
-        {console.log(open)}
-        <li className={logoClass}>
-          {logo ? logo : <Image alt="logo" src={logoSvg} />}
-        </li>
-        {navigationArr &&
-          navigationArr.map(item => (
-            <li className={listItems} key={item}>
-              {item}
+    <>
+      <Aside isOpen={sidebar} closeModal={sidebarOpener} />
+      {console.log(sidebar, '1')}
+      <SectionWrapper className={sectionWrapper} htmlTag="nav">
+        <section className={sectionClasses}>
+          <ul className={listClasses}>
+            <li className={logoClass}>
+              {logo ? logo : <Image alt="logo" src={logoSvg} />}
             </li>
-          ))}
-        <li className={hamburgerClasses} onClick={sidebarOpener}>
-          <Image src={hamburgerSvg} alt="hamburger" />
-        </li>
-      </ul>
-    </section>
+            {navigationArr &&
+              navigationArr.map(item => (
+                <li className={listItems} key={item}>
+                  {item}
+                </li>
+              ))}
+            <li className={hamburgerClasses} onClick={sidebarOpener}>
+              <Image src={hamburgerSvg} alt="hamburger" />
+            </li>
+          </ul>
+        </section>
+      </SectionWrapper>
+    </>
   );
 }

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { PageWrapper, SectionWrapper, Navigation } from 'components';
+import { PageWrapper, SectionWrapper, Navigation, Aside } from 'components';
 import { PageDefaultContext, PageDefaultObject } from 'context/pageDefaults';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -12,12 +12,7 @@ const Home: NextPage = () => {
       </Head>
       <PageDefaultContext.Provider value={PageDefaultObject}>
         <PageWrapper>
-          <SectionWrapper
-            className=" col-start-2 col-end-3 row-start-1 h-[50px] sticky top-0 overflow-hidden"
-            htmlTag="nav"
-          >
-            <Navigation />
-          </SectionWrapper>
+          <Navigation />
           <SectionWrapper
             className="col-start-2 col-end-3 row-start-2 h-[200vh]"
             htmlTag="main"

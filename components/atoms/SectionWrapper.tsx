@@ -5,7 +5,7 @@ interface MainWrapperI {
   className: string;
 }
 
-export default function MainWrapper({
+export default function SectionWrapper({
   htmlTag,
   children,
   className,

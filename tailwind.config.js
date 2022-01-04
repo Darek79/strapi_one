@@ -17,7 +17,7 @@ module.exports = {
       gridTemplateColumns: {
         mobile: '10px 1fr 10px',
         tablet: '20px 1fr 20px',
-        desktop: '10% 1fr 10%'
+        desktop: 'minmax(10%,auto) 1fr minmax(10%,auto)'
       },
       gridTemplateRows: {
         default: 'auto 1fr auto'
