@@ -11,5 +11,5 @@ export default function MainWrapper({
   className,
   ...rest
 }: MainWrapperI): JSX.Element {
-  return createElement(htmlTag, { className, rest }, children);
+  return createElement(htmlTag, { className, ...rest }, children);
 }

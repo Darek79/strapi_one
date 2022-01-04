@@ -1,7 +1,12 @@
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   mode: 'jit',
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
+    fontFamily: {
+      sans: ['Roboto', 'Arial', 'sans-serif']
+    },
     extend: {
       colors: {
         pageDarkGrey: '#292928',
@@ -18,6 +23,5 @@ module.exports = {
         default: 'auto 1fr auto'
       }
     }
-  },
-  plugins: []
+  }
 };
