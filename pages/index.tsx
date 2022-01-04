@@ -13,7 +13,7 @@ const Home: NextPage = () => {
       <PageDefaultContext.Provider value={PageDefaultObject}>
         <PageWrapper>
           <SectionWrapper
-            className=" col-start-2 col-end-3 row-start-1 h-[50px] sticky top-0"
+            className=" col-start-2 col-end-3 row-start-1 h-[50px] sticky top-0 overflow-hidden"
             htmlTag="nav"
           >
             <Navigation />

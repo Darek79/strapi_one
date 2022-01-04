@@ -7,6 +7,7 @@ import {
   WheelEvent
 } from 'react';
 import { PageDefaultContext } from 'context/pageDefaults';
+import { Aside } from 'components';
 import { debounce } from 'utils';
 import Image from 'next/image';
 import logoSvg from 'public/logo.svg';
@@ -26,23 +27,30 @@ export default function Navigation({
   fontStyles = 'font-bold text-slate-50',
   logoStyles = 'w-[50px]',
   listStyles = 'bg-pageDarkGrey',
-  sectionStyles = 'h-[100%]',
+  sectionStyles = 'h-[100%] transition-all translate-y-0 duration-300',
   hamburgerStyles = 'w-[20px] sm:hidden',
   logo
 }: NavigationI): JSX.Element {
   const { navigationArr } = useContext(PageDefaultContext);
-  const [open, setOpen] = useState<boolean>();
+  const [open, setOpen] = useState<boolean>(true);
+  const [sidebar, setSidebar] = useState<boolean>(false);
 
   useEffect(() => {
-    window.onwheel = debounce((e: WheelEvent) => {
-      console.log(window.scrollY);
-      e.deltaY < 0 ? setOpen(true) : setOpen(false);
-    }, 300);
-  }, []);
-  // prettier-ignore
+    if (!sidebar) {
+      window.onwheel = debounce((e: WheelEvent) => {
+        console.log(window.scrollY);
+        e.deltaY < 0 ? setOpen(true) : setOpen(false);
+      }, 300);
+    }
+  }, [sidebar]);
+
+  function sidebarOpener() {
+    setSidebar(p => !p);
+  }
+
   const sectionClasses = classnames({
-    [`${sectionStyles}`]: true,
-    'hidden': !open && window.scrollY >100
+    [`${sectionStyles}`]: open,
+    'h-[100%] transition-all -translate-y-14 duration-300': !open
   });
 
   const listClasses = classnames({
@@ -62,21 +70,25 @@ export default function Navigation({
   });
 
   const hamburgerClasses = classnames({
-    [`${hamburgerStyles}`]: true
+    [`${hamburgerStyles}`]: true,
+    'hover:cursor-pointer': true
   });
 
   return (
     <section className={sectionClasses}>
+      <Aside isOpen={sidebar} />
       <ul className={listClasses}>
         {console.log(open)}
-        <li className={logoClass}>{logo ? logo : <Image src={logoSvg} />}</li>
+        <li className={logoClass}>
+          {logo ? logo : <Image alt="logo" src={logoSvg} />}
+        </li>
         {navigationArr &&
           navigationArr.map(item => (
             <li className={listItems} key={item}>
               {item}
             </li>
           ))}
-        <li className={hamburgerClasses}>
+        <li className={hamburgerClasses} onClick={sidebarOpener}>
           <Image src={hamburgerSvg} alt="hamburger" />
         </li>
       </ul>
