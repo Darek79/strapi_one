@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { PageWrapper, SectionWrapper, Navigation, Aside } from 'components';
+import { PageWrapper, SectionWrapper, Navigation, FrontPage } from 'components';
 import { PageDefaultContext, PageDefaultObject } from 'context/pageDefaults';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -14,9 +14,10 @@ const Home: NextPage = () => {
         <PageWrapper>
           <Navigation />
           <SectionWrapper
-            className="col-start-2 col-end-3 row-start-2 h-[200vh]"
+            className="col-start-2 col-end-3 row-start-2 h-[200vh] bg-red-400"
             htmlTag="main"
           >
+            <FrontPage />
             <div className="h-[calc(100vh-50px)]">main</div>
           </SectionWrapper>
         </PageWrapper>

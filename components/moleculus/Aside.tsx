@@ -1,4 +1,4 @@
-import { useContext, memo, Dispatch, SetStateAction } from 'react';
+import { useContext, memo } from 'react';
 import { PageDefaultContext } from 'context/pageDefaults';
 import closingX from 'public/closingX.svg';
 import Image from 'next/image';
