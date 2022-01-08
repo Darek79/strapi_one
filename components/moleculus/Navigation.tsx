@@ -24,7 +24,7 @@ interface NavigationI {
 }
 
 export default function Navigation({
-  fontStyles = 'font-bold text-slate-50',
+  fontStyles = 'font-bold text-pageWhite',
   logoStyles = 'w-[50px]',
   listStyles = 'bg-pageDarkGrey',
   sectionStyles = 'h-[100%] transition-all translate-y-0 duration-300',

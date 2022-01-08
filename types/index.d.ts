@@ -1,0 +1,1 @@
+export { TextElementType } from './textElementType';

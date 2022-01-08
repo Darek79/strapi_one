@@ -9,7 +9,7 @@ export default function PageWrapper({ children }: PageWrapperI): JSX.Element {
     'div',
     {
       className:
-        'grid grid-rows-default grid-cols-mobile md:grid-cols-tablet xl:grid-cols-desktop'
+        'grid grid-rows-default grid-cols-mobile md:grid-cols-tablet xl:grid-cols-desktop bg-pageDarkGrey'
     },
     children
   );

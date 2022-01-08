@@ -8,6 +8,9 @@ module.exports = {
       sans: ['Roboto', 'Arial', 'sans-serif']
     },
     extend: {
+      backgroundPosition: {
+        bannerSmall: '25% 50%'
+      },
       colors: {
         pageDarkGrey: '#292928',
         pageWhite: '#EFEFF0',
