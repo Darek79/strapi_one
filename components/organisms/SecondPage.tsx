@@ -1,50 +1,51 @@
-import { HeaderElement, TextElement } from 'components';
-import classname from 'classnames';
-interface SecondPageI {}
+import { useState } from 'react';
+import { HeaderElement, TextElement, TextRight, VideoItem } from 'components';
 
-export default function SecondPage(): JSX.Element {
-  const TextHClasses = classname({
-    'textSizes font-bold text-pageWhite': true
+import classname from 'classnames';
+interface SecondPageI {
+  sectionStylesBg?: string;
+  elementStylesWrapper?: string;
+  textColorStyles?: string;
+}
+
+const arr: string[] = ['CAMPAIGNS', 'MARKETING', 'STRATEGY'];
+
+export default function SecondPage({
+  sectionStylesBg = 'bg-pageWhite',
+  textColorStyles = 'text-pageWhite md:text-pageBlack'
+}: SecondPageI): JSX.Element {
+  const [state, setState] = useState<boolean>(true);
+
+  const sectionClasses = classname({
+    [`${sectionStylesBg}`]: true
   });
+
+  const divWrapperClasses = classname({
+    'flex relative overflow-hidden lg:gap-2': true
+  });
+
+  const textColorClasses = classname({
+    'text-5xl md:text-6xl lg:text-8xl font-bold': true,
+    [`${textColorStyles}`]: true
+  });
+  function change() {
+    setState(p => !p);
+  }
+
   return (
-    <section className="bg-pageWhite">
-      <div className="flex justify-center items-end lg:items-center relative">
-        <HeaderElement className="flex flex-col justify-center items-start absolute md:static bottom-2">
-          <TextElement
-            className="text-5xl md:text-6xl lg:text-8xl font-bold text-pageWhite md:text-pageBlack"
-            htmlTag="h3"
-          >
-            CAMPAIGNS
-          </TextElement>
-          <TextElement
-            className="text-5xl md:text-6xl lg:text-8xl font-bold text-pageWhite md:text-pageBlack"
-            htmlTag="h3"
-          >
-            MARKETING
-          </TextElement>
-          <TextElement
-            className="text-5xl md:text-6xl lg:text-8xl font-bold text-pageWhite md:text-pageBlack"
-            htmlTag="h3"
-          >
-            STRATEGY
-          </TextElement>
-          <TextElement
-            className="text-1xl md:text-3xl lg:text-3xl my-4 text-pageWhite md:text-pageBlack break-words sm:w-3/4 md:w-full lg:w-[90%]"
-            htmlTag="p"
-          >
-            Consectetuer adipiscing elit, sed diam nibh euismod tincidunt ut
-            laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
-            veniam, quis nostrud&nbsp;.{' '}
-          </TextElement>
+    <section className={sectionClasses}>
+      {/* <button onClick={change}>click</button> */}
+      <div className={divWrapperClasses}>
+        <HeaderElement className="flex w-full flex-col justify-center items-center absolute md:static bottom-6 z-10">
+          <TextRight state={state}>
+            {arr.map(el => (
+              <TextElement key={el} className={textColorClasses} htmlTag="h3">
+                {el}
+              </TextElement>
+            ))}
+          </TextRight>
         </HeaderElement>
-        <video
-          className="w-full md:w-1/2 "
-          loop={true}
-          autoPlay={true}
-          muted={true}
-        >
-          <source src="woman.mp4" type="video/mp4"></source>
-        </video>
+        <VideoItem />
       </div>
     </section>
   );

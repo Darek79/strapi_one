@@ -48,7 +48,8 @@ export default function Navigation({
   }
 
   const sectionWrapper = classnames({
-    'sticky top-0 row-start-1 h-[50px] overflow-hidden sectionMaxWidth': true
+    'sticky z-[99999] top-0 row-start-1 h-[50px] overflow-hidden sectionMaxWidth':
+      true
   });
 
   const sectionClasses = classnames({
@@ -80,7 +81,6 @@ export default function Navigation({
   return (
     <>
       <Aside isOpen={sidebar} closeModal={sidebarOpener} />
-      {console.log(sidebar, '1')}
       <SectionWrapper className={sectionWrapper} htmlTag="nav">
         <section className={sectionClasses}>
           <ul className={listClasses}>

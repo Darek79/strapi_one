@@ -30,7 +30,7 @@ export default memo(function Sidebar({
   return (
     <section className={asideClasses}>
       <div
-        className="w-[100%] h-[50px] flex items-center px-[10px] justify-end hover:cursor-pointer"
+        className="w-[100%] h-[50px] flex items-center px-[10px] justify-end hover:cursor-pointer z-30"
         onClick={closeModal}
       >
         <Image width={25} height={25} alt="closingX" src={closingX} />
