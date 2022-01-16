@@ -5,19 +5,26 @@ import classname from 'classnames';
 interface TextRightI {
   state?: boolean;
   children?: ReactNode;
-  textSizes?: string;
+  textSizesStyle?: string;
+  textWrapperStyle?: string;
 }
 
 export default function TextRight({
   state,
   children,
-  textSizes = 'h-12 leading-4 md:h-16 lg:h-24'
+  textSizesStyle = 'h-12 leading-4 md:h-16 lg:h-24',
+  textWrapperStyle = 'm-auto'
 }: TextRightI): JSX.Element {
   const items = Children.toArray(children);
 
   const textSizesClasses = classname({
-    'flex overflow-hidden': true,
-    [`${textSizes}`]: true
+    'overflow-hidden': true,
+    [`${textSizesStyle}`]: true
+  });
+
+  const textWrapperClasses = classname({
+    'relative overflow-hidden': true,
+    [`${textWrapperStyle}`]: true
   });
 
   const trail = useTrail(items.length, {
@@ -35,7 +42,7 @@ export default function TextRight({
           style={{ transform: x.to(x => `translateY(${x})`), ...styles }}
           className={textSizesClasses}
         >
-          <a.div style={{ height }} className="relative overflow-hidden m-auto">
+          <a.div style={{ height }} className={textWrapperClasses}>
             {items[i]}
           </a.div>
         </a.div>

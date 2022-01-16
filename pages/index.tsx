@@ -8,7 +8,8 @@ import {
   FrontPage,
   SecondPage,
   ImagePage,
-  Ideas
+  Ideas,
+  Contact
 } from 'components';
 
 const DynamicSecondPage = dynamic(
@@ -47,6 +48,7 @@ const Home: NextPage = () => {
             {/* <SecondPage /> */}
             <ImagePage />
             <Ideas />
+            <Contact />
             <div className="h-[calc(100vh)]">main</div>
           </SectionWrapper>
         </PageWrapper>

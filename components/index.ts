@@ -26,6 +26,7 @@ export { default as FrontPage } from './organisms/FrontPage';
 export { default as SecondPage } from './organisms/SecondPage';
 export { default as ImagePage } from './organisms/ImagePage';
 export { default as Ideas } from './organisms/Ideas';
+export { default as Contact } from './organisms/Contact';
 
 //
 // ─── SPRINGS ────────────────────────────────────────────────────────────────────

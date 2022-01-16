@@ -9,19 +9,25 @@ interface HeaderI {
   htmlTagSlogan?: TextElementType;
   htmlTagDescription?: TextElementType;
   imageOptional?: boolean;
-  descriptionOptional?: boolean;
+  textBlockOptional?: boolean;
   imageWrapperStyle?: string;
   src?: { src: ImageProps['src']; alt: string };
   txtSlogan?: string;
   txtDescription?: string;
   headerWrapperStyles?: string;
   textElementWrapperStyles?: string;
+  textBlockSloganOptional?: boolean;
+  textBlockSloganDesc?: boolean;
+  textSloganStyles?: string;
+  textDescStyles?: string;
 }
 
 export default function Header({
   imageOptional = false,
-  descriptionOptional = false,
-  imageWrapperStyle = 'py-6',
+  textBlockOptional = false,
+  textBlockSloganOptional = false,
+  textBlockSloganDesc = false,
+  imageWrapperStyle = 'py-6 sm:w-3/4 md:w-1/2 lg:w-full lg:py-0 ',
   htmlTagWrapper = 'header',
   htmlTagSlogan = 'h3',
   htmlTagDescription = 'p',
@@ -30,17 +36,28 @@ export default function Header({
   txtDescription = `Consectetuer adipiscing elit, sed diam nibh euismod tincidunt ut
   laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
   veniam, quis nostrud .`,
-  headerWrapperStyles = 'w-full',
-  textElementWrapperStyles = 'w-full flex flex-col justify-center items-center'
+  headerWrapperStyles = 'w-full sm:flex sm:flex-col sm:items-center sm:justify-center lg:gap-4',
+  textElementWrapperStyles = 'w-full sm:w-3/4 md:w-1/2 lg:w-full lg:gap-2 flex flex-col justify-center items-center',
+  textSloganStyles = 'w-3/4 lg:w-full font-bold text-3xl',
+  textDescStyles = 'w-3/4 lg:w-full lg:text-md'
 }: HeaderI): JSX.Element {
   const headerClasses = classname({
     [`${headerWrapperStyles}`]: true
   });
 
   const textWrapperClasses = classname({
-    hidden: descriptionOptional,
+    hidden: textBlockOptional,
     [`${textElementWrapperStyles}`]: true
   });
+  const textSloganClasses = classname({
+    hidden: textBlockSloganOptional,
+    [`${textSloganStyles}`]: true
+  });
+  const textDescClasses = classname({
+    hidden: textBlockSloganDesc,
+    [`${textDescStyles}`]: true
+  });
+
   const imageClasses = classname({
     hidden: imageOptional,
     [`${imageWrapperStyle}`]: true
@@ -54,12 +71,14 @@ export default function Header({
       <div className={textWrapperClasses}>
         <TextElement
           htmlTag={htmlTagSlogan}
-          className="w-3/4 font-bold text-3xl"
+          className={textSloganClasses}
           dangerouslySetInnerHTML={{ __html: txtSlogan }}
         />
-        <TextElement htmlTag={htmlTagDescription} className="w-3/4">
-          {txtDescription}
-        </TextElement>
+        <TextElement
+          htmlTag={htmlTagDescription}
+          className={textDescClasses}
+          dangerouslySetInnerHTML={{ __html: txtDescription }}
+        />
       </div>
     </HeaderElement>
   );
