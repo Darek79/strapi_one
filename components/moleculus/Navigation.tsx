@@ -7,6 +7,7 @@ import {
   WheelEvent
 } from 'react';
 import { PageDefaultContext } from 'context/pageDefaults';
+import { createPortal } from 'react-dom';
 import { Aside, SectionWrapper } from 'components';
 import { debounce } from 'utils';
 import Image from 'next/image';
@@ -48,7 +49,7 @@ export default function Navigation({
   }
 
   const sectionWrapper = classnames({
-    'sticky z-[99999] top-0 row-start-1 h-[50px] overflow-hidden sectionMaxWidth':
+    'sticky z-[50] top-0 row-start-1 h-[50px] overflow-hidden sectionMaxWidth':
       true
   });
 

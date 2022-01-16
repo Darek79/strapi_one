@@ -8,6 +8,7 @@ export { default as Button } from './atoms/Button';
 export { default as TextElement } from './atoms/TextElement';
 export { default as HeaderElement } from './atoms/HeaderElement';
 export { default as VideoItem } from './atoms/VideoItem';
+export { default as Tile } from './atoms/Tile';
 
 //
 // ─── MOLECULES ──────────────────────────────────────────────────────────────────
@@ -15,6 +16,7 @@ export { default as VideoItem } from './atoms/VideoItem';
 
 export { default as Navigation } from './moleculus/Navigation';
 export { default as Aside } from './moleculus/Aside';
+export { default as Header } from './moleculus/Header';
 
 //
 // ─── ORGANISMS ──────────────────────────────────────────────────────────────────

@@ -16,7 +16,7 @@ export default memo(function Sidebar({
   isOpen,
   closeModal,
   asideStylesClosed = 'fixed top-0 justify-center md:hidden h-[100vh] w-[100%] transition-all translate-x-[100vw]',
-  asideStylesOpen = 'fixed top-0 z-20 justify-center md:hidden h-[100vh] w-[100%] transition-all',
+  asideStylesOpen = 'fixed top-0 z-[60] justify-center md:hidden h-[100vh] w-[100%] transition-all',
   asideBgColor = 'bg-pageDarkGrey'
 }: SidebarI): JSX.Element {
   const { navigationArr } = useContext(PageDefaultContext);

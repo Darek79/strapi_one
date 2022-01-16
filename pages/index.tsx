@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import {
   PageWrapper,
@@ -9,6 +10,13 @@ import {
   ImagePage,
   Ideas
 } from 'components';
+
+const DynamicSecondPage = dynamic(
+  () => import('components/organisms/SecondPage')
+);
+
+const state = false;
+
 import { PageDefaultContext, PageDefaultObject } from 'context/pageDefaults';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -22,6 +30,8 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preload" href="woman.mp4" type="video/mp4"></link>
       </Head>
       <PageDefaultContext.Provider value={PageDefaultObject}>
         <PageWrapper>
@@ -32,13 +42,16 @@ const Home: NextPage = () => {
             htmlTag="main"
           >
             <FrontPage />
-            <SecondPage />
+            {/* {state ? <DynamicSecondPage /> : null} */}
+            <DynamicSecondPage />
+            {/* <SecondPage /> */}
             <ImagePage />
             <Ideas />
             <div className="h-[calc(100vh)]">main</div>
           </SectionWrapper>
         </PageWrapper>
       </PageDefaultContext.Provider>
+      <div id="portal" />
     </>
   );
 };

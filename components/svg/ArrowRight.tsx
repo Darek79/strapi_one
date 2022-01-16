@@ -14,7 +14,7 @@ export default function ArrowRight({
   svgFillArrowStyle = '#000',
   svgStrokeArrowStyle = '#000',
   strokeWidthStyle = '2',
-  linkHref = '#'
+  linkHref = 'test'
 }: ArrowRightI): JSX.Element {
   return (
     <Link href={linkHref}>

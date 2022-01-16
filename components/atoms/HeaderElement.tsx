@@ -1,10 +1,12 @@
 import { createElement, HTMLAttributes, ReactNode } from 'react';
-interface HeaderElementI extends HTMLAttributes<HTMLElement> {
+export interface HeaderElementI extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
+  htmlTag?: 'header' | 'article';
 }
 export default function HeaderElement({
   children,
+  htmlTag = 'header',
   ...rest
 }: HeaderElementI): JSX.Element {
-  return createElement('header', rest, children);
+  return createElement(htmlTag, rest, children);
 }

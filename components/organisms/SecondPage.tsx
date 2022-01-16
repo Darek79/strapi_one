@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { HeaderElement, TextElement, TextRight, VideoItem } from 'components';
+import { useInView } from 'react-intersection-observer';
 
 import classname from 'classnames';
 interface SecondPageI {
@@ -14,7 +15,9 @@ export default function SecondPage({
   sectionStylesBg = 'bg-pageWhite',
   textColorStyles = 'text-pageWhite md:text-pageBlack'
 }: SecondPageI): JSX.Element {
-  const [state, setState] = useState<boolean>(true);
+  const { inView, ref } = useInView({
+    threshold: 0.6
+  });
 
   const sectionClasses = classname({
     [`${sectionStylesBg}`]: true
@@ -28,16 +31,12 @@ export default function SecondPage({
     'text-5xl md:text-6xl lg:text-8xl font-bold': true,
     [`${textColorStyles}`]: true
   });
-  function change() {
-    setState(p => !p);
-  }
 
   return (
-    <section className={sectionClasses}>
-      {/* <button onClick={change}>click</button> */}
+    <section className={sectionClasses} ref={ref}>
       <div className={divWrapperClasses}>
         <HeaderElement className="flex w-full flex-col justify-center items-center absolute md:static bottom-6 z-10">
-          <TextRight state={state}>
+          <TextRight state={inView}>
             {arr.map(el => (
               <TextElement key={el} className={textColorClasses} htmlTag="h3">
                 {el}
@@ -45,7 +44,7 @@ export default function SecondPage({
             ))}
           </TextRight>
         </HeaderElement>
-        <VideoItem />
+        <VideoItem state={inView} />
       </div>
     </section>
   );

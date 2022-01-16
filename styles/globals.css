@@ -19,6 +19,6 @@
     @apply text-3xl px-16 py-2;
   }
   .textSizes {
-    @apply text-5xl md:text-6xl lg:text-9xl;
+    @apply text-5xl md:text-6xl lg:text-8xl 2xl:text-9xl;
   }
 }
