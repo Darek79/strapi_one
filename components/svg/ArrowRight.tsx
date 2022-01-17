@@ -1,5 +1,5 @@
 import Link from 'next/link';
-interface ArrowRightI {
+export interface ArrowRightI {
   svgSizeStyle?: string;
   svgFillStyle?: string;
   svgFillArrowStyle?: string;

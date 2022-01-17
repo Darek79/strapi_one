@@ -9,7 +9,8 @@ import {
   SecondPage,
   ImagePage,
   Ideas,
-  Contact
+  Contact,
+  Footer
 } from 'components';
 
 const DynamicSecondPage = dynamic(
@@ -23,10 +24,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 const Home: NextPage = () => {
-  useEffect(() => {
-    const data = fetch('/api/hello');
-    data.then(d => d.json()).then(d => console.log(d));
-  }, []);
+  // useEffect(() => {
+  //   const data = fetch('/api/hello');
+  //   data.then(d => d.json()).then(d => console.log(d));
+  // }, []);
   return (
     <>
       <Head>
@@ -49,7 +50,13 @@ const Home: NextPage = () => {
             <ImagePage />
             <Ideas />
             <Contact />
-            <div className="h-[calc(100vh)]">main</div>
+            {/* <div className="h-[calc(100vh)]">main</div> */}
+          </SectionWrapper>
+          <SectionWrapper
+            className="col-start-2 col-end-3 row-start-3"
+            htmlTag="footer"
+          >
+            <Footer />
           </SectionWrapper>
         </PageWrapper>
       </PageDefaultContext.Provider>
