@@ -20,7 +20,7 @@ const bannerArr = [
 
 export default function ImagePage(): JSX.Element {
   return (
-    <section className="flex sm:flex-wrap flex-col sm:flex-row flex-grow-0 w-full">
+    <section className="flex sm:flex-wrap flex-col sm:flex-row sm:justify-between gap-x-1 gap-y-2 w-full bg-pageWhite">
       {bannerArr.map(el => (
         <Tile
           link="#"

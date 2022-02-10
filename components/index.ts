@@ -9,6 +9,8 @@ export { default as TextElement } from './atoms/TextElement';
 export { default as HeaderElement } from './atoms/HeaderElement';
 export { default as VideoItem } from './atoms/VideoItem';
 export { default as Tile } from './atoms/Tile';
+export { default as Input } from './atoms/Input';
+export { default as FooterCategory } from './atoms/FooterCategory';
 
 //
 // ─── MOLECULES ──────────────────────────────────────────────────────────────────
@@ -27,6 +29,7 @@ export { default as SecondPage } from './organisms/SecondPage';
 export { default as ImagePage } from './organisms/ImagePage';
 export { default as Ideas } from './organisms/Ideas';
 export { default as Contact } from './organisms/Contact';
+export { default as Footer } from './organisms/Footer';
 
 //
 // ─── SPRINGS ────────────────────────────────────────────────────────────────────
@@ -39,3 +42,4 @@ export { default as TextRight } from './springs/TextRight';
 //
 
 export { default as ArrowRight } from './svg/ArrowRight';
+export { default as FooterDivider } from './svg/FooterDivider';

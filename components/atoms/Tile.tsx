@@ -21,7 +21,7 @@ interface TileI {
 }
 
 export default function Tile({
-  wrapperStyles = 'basis-1/2 md:basis-1/3',
+  wrapperStyles = 'basis-[calc(50%-.25rem)] md:basis-[calc(33.3333%-.25rem)]',
   elementStyles = 'absolute z-10 p-4 m-4',
   elementTextSizes = 'text-lg 2xl:text-xl',
   elementBg = 'bg-pageWhite',
